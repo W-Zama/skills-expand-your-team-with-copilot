@@ -1,0 +1,191 @@
+name: データ管理・学生情報
+description: 学生情報や部活動データの追加・削除・変更に関する依頼
+title: "[データ管理] "
+labels: ["data", "management", "teacher-request"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## データ管理リクエスト
+        
+        学生情報、部活動データ、その他の情報の追加・削除・変更が必要な場合に使用してください。
+        どのようなデータをどのように扱いたいかを具体的に教えてください。
+
+  - type: dropdown
+    id: data_operation
+    attributes:
+      label: 必要な操作
+      description: データに対してどのような操作が必要ですか？
+      options:
+        - 新しいデータの追加
+        - 既存データの変更・更新
+        - データの削除
+        - データの一括処理
+        - データのエクスポート・インポート
+        - その他
+    validations:
+      required: true
+
+  - type: dropdown
+    id: data_type
+    attributes:
+      label: データの種類
+      description: どの種類のデータを扱いますか？
+      options:
+        - 学生情報
+        - 部活動・クラブ情報
+        - 教師情報
+        - 登録・申込み情報
+        - その他
+    validations:
+      required: true
+
+  - type: textarea
+    id: specific_request
+    attributes:
+      label: 具体的な依頼内容
+      description: どのようなデータ操作が必要ですか？詳細を教えてください
+      placeholder: |
+        例：
+        - 新入生50名の情報を一括で追加したい
+        - 卒業生のデータを削除したい
+        - 部活動の定員数を変更したい
+        - 学年が上がったので全生徒の学年を更新したい
+        - 新しい部活動「茶道部」を追加したい
+    validations:
+      required: true
+
+  - type: textarea
+    id: data_details
+    attributes:
+      label: データの詳細
+      description: 扱うデータの具体的な内容を教えてください
+      placeholder: |
+        例：
+        学生情報の場合：
+        - 氏名、学年、クラス、学籍番号、メールアドレスなど
+        
+        部活動情報の場合：
+        - 部活動名、顧問教師、活動場所、定員、活動日時など
+        
+        既存データの変更の場合：
+        - 変更したい項目と新しい値
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: data_source
+    attributes:
+      label: データの提供方法
+      description: データをどのように提供できますか？（複数選択可）
+      options:
+        - label: Excelファイル
+        - label: CSVファイル
+        - label: 手入力でリスト化
+        - label: 既存システムからのエクスポート
+        - label: 紙の資料（デジタル化が必要）
+        - label: その他
+
+  - type: textarea
+    id: timeline
+    attributes:
+      label: 希望スケジュール
+      description: いつまでにこの作業を完了する必要がありますか？
+      placeholder: |
+        例：
+        - 新学期開始前（4月1日まで）
+        - 来週の授業までに
+        - 急ぎではない
+        - 定期的に実施（月1回など）
+
+  - type: dropdown
+    id: data_sensitivity
+    attributes:
+      label: データの機密性
+      description: 扱うデータの機密レベルはどの程度ですか？
+      options:
+        - 高（個人情報を含む）
+        - 中（内部情報）
+        - 低（公開しても問題ない）
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: required_permissions
+    attributes:
+      label: 必要な権限・承認
+      description: この作業を行うために必要な権限や承認はありますか？（複数選択可）
+      options:
+        - label: 校長の承認が必要
+        - label: 教務主任の承認が必要
+        - label: 保護者の同意が必要
+        - label: 学生本人の同意が必要
+        - label: 特別な権限は不要
+        - label: 不明
+
+  - type: textarea
+    id: backup_requirements
+    attributes:
+      label: バックアップ・復元要件
+      description: データの安全性についてどのような配慮が必要ですか？
+      placeholder: |
+        例：
+        - 変更前のデータのバックアップを取ってほしい
+        - 間違った場合に元に戻せるようにしてほしい
+        - 削除は慎重に行ってほしい
+        - 特別な要求はない
+
+  - type: textarea
+    id: validation_rules
+    attributes:
+      label: データの検証・確認方法
+      description: データが正しく処理されたことをどのように確認しますか？
+      placeholder: |
+        例：
+        - 処理後にリストを確認したい
+        - テスト用の少数データで事前確認したい
+        - 特定の条件でデータを抽出して確認したい
+        - 自動的な確認メールが送られてほしい
+
+  - type: textarea
+    id: additional_considerations
+    attributes:
+      label: その他の考慮事項
+      description: データ処理時に注意すべき点があれば教えてください
+      placeholder: |
+        例：
+        - 既存のデータとの重複を避けたい
+        - 特定のフォーマットでデータを出力したい
+        - 他のシステムとの連携が必要
+        - プライバシー保護に特に注意が必要
+
+  - type: textarea
+    id: technical_requirements
+    attributes:
+      label: 開発者向け技術要件
+      description: |
+        **データ管理の技術的な制約と指針:**
+        
+        **データストレージ:**
+        - 現在：メモリ内データベース（再起動で初期化）
+        - 永続化が必要な場合はファイルベースまたは軽量DB検討
+        
+        **ファイル処理:**
+        - Python標準ライブラリ使用（csv、json等）
+        - パンダス等の外部ライブラリは避ける
+        
+        **データ検証:**
+        - 入力データの妥当性確認
+        - 重複チェック
+        - 必須フィールドの確認
+        
+        **セキュリティ:**
+        - 個人情報の適切な取り扱い
+        - 入力値のサニタイゼーション
+        - 権限チェック
+        
+        **既存コード:**
+        - `src/backend/database.py` でデータ管理
+        - 新しいAPIエンドポイントは `src/backend/routers/` に追加
+        - フロントエンドからのデータ操作は `src/static/app.js` で実装
+      render: markdown

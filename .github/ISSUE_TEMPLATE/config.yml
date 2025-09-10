@@ -1,0 +1,13 @@
+blank_issues_enabled: true
+contact_links:
+  - name: 🚨 緊急時のサポート
+    url: mailto:admin@mergington-high.edu
+    about: システムが完全に使用できない場合や、セキュリティ上の緊急事態の場合は、直接メールでご連絡ください。
+
+  - name: 📚 操作マニュアル
+    url: https://github.com/W-Zama/skills-expand-your-team-with-copilot/wiki
+    about: システムの基本的な使い方や操作方法については、まずこちらのマニュアルをご確認ください。
+
+  - name: 💬 教師向けディスカッション
+    url: https://github.com/W-Zama/skills-expand-your-team-with-copilot/discussions
+    about: 他の教師との情報交換や、システム改善のアイデア共有にご利用ください。
