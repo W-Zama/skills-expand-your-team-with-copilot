@@ -1,25 +1,25 @@
 /* Color palette */
 :root {
-  /* Primary colors */
-  --primary: #1a237e;
-  --primary-light: #534bae;
-  --primary-dark: #000051;
+  /* Primary colors - School colors: Lime Green */
+  --primary: #32cd32;
+  --primary-light: #90ee90;
+  --primary-dark: #228b22;
   --primary-text: #ffffff;
 
-  /* Secondary colors */
-  --secondary: #ff6f00;
-  --secondary-light: #ffa040;
-  --secondary-dark: #c43e00;
+  /* Secondary colors - Accent lime green */
+  --secondary: #7cfc00;
+  --secondary-light: #adff2f;
+  --secondary-dark: #6bb700;
   --secondary-text: #ffffff;
 
-  /* Neutral colors */
-  --background: #f5f5f5;
-  --surface: #ffffff;
+  /* Neutral colors - White background for school colors */
+  --background: #ffffff;
+  --surface: #f8fff8;
   --text-primary: #333333;
   --text-secondary: #666666;
   --border: #e0e0e0;
   --border-light: #f0f0f0;
-  --border-focus: #d0d0d0;
+  --border-focus: #32cd32;
 
   /* Feedback colors */
   --success: #2e7d32;
@@ -62,6 +62,73 @@ header {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+/* School Mascots Styling */
+.school-mascots {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+}
+
+.additional-mascots {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 10px;
+  flex-wrap: wrap;
+}
+
+.mascot-emoji {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 3px solid var(--primary-text);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+  background: rgba(255, 255, 255, 0.1);
+  cursor: pointer;
+}
+
+.mascot-emoji.small {
+  width: 60px;
+  height: 60px;
+  border-width: 2px;
+  font-size: 1.8rem;
+}
+
+.mascot-emoji:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Remove old mascot-img styles */
+.mascot-img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 3px solid var(--primary-text);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  object-fit: cover;
+}
+
+.mascot-img.small {
+  width: 60px;
+  height: 60px;
+  border-width: 2px;
+}
+
+.mascot-img:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
 
 header h1 {
@@ -663,4 +730,60 @@ footer {
 
 #logout-button:hover {
   background-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Git Branch Background Animation */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1;
+  background: 
+    linear-gradient(45deg, transparent 49%, rgba(50, 205, 50, 0.1) 49%, rgba(50, 205, 50, 0.1) 51%, transparent 51%),
+    linear-gradient(-45deg, transparent 49%, rgba(50, 205, 50, 0.1) 49%, rgba(50, 205, 50, 0.1) 51%, transparent 51%),
+    linear-gradient(90deg, transparent 49%, rgba(50, 205, 50, 0.05) 49%, rgba(50, 205, 50, 0.05) 51%, transparent 51%);
+  background-size: 60px 60px, 60px 60px, 200px 200px;
+  animation: gitBranches 20s linear infinite;
+}
+
+@keyframes gitBranches {
+  0% {
+    background-position: 0px 0px, 0px 0px, 0px 0px;
+  }
+  100% {
+    background-position: 60px 60px, -60px 60px, 200px 200px;
+  }
+}
+
+/* Git commits floating animation */
+body::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1;
+  background-image: 
+    radial-gradient(circle at 20% 30%, rgba(50, 205, 50, 0.2) 2px, transparent 3px),
+    radial-gradient(circle at 80% 20%, rgba(50, 205, 50, 0.2) 2px, transparent 3px),
+    radial-gradient(circle at 40% 70%, rgba(50, 205, 50, 0.2) 2px, transparent 3px),
+    radial-gradient(circle at 70% 80%, rgba(50, 205, 50, 0.2) 2px, transparent 3px),
+    radial-gradient(circle at 10% 80%, rgba(50, 205, 50, 0.2) 2px, transparent 3px);
+  background-size: 300px 300px, 400px 400px, 350px 350px, 280px 280px, 320px 320px;
+  animation: floatingCommits 30s ease-in-out infinite;
+}
+
+@keyframes floatingCommits {
+  0%, 100% {
+    background-position: 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%;
+  }
+  50% {
+    background-position: 100% 100%, -100% 100%, 100% -100%, -100% -100%, 50% 100%;
+  }
 }
