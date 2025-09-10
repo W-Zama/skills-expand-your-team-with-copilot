@@ -1,0 +1,218 @@
+name: セキュリティ・プライバシーの懸念
+description: セキュリティやプライバシーに関する問題や改善要望
+title: "[セキュリティ] "
+labels: ["security", "privacy", "urgent"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## セキュリティ・プライバシーに関する報告
+        
+        システムのセキュリティやプライバシー保護に関する懸念、問題、改善要望がある場合に使用してください。
+        学生や教師の個人情報を適切に保護することは非常に重要です。
+
+  - type: dropdown
+    id: issue_type
+    attributes:
+      label: 問題の種類
+      description: どのような種類の問題ですか？
+      options:
+        - セキュリティの脆弱性を発見した
+        - 個人情報の不適切な表示・アクセス
+        - パスワード・認証の問題
+        - データの不正アクセスの可能性
+        - プライバシー保護の改善要望
+        - セキュリティ機能の追加要望
+        - その他のセキュリティ懸念
+    validations:
+      required: true
+
+  - type: dropdown
+    id: severity
+    attributes:
+      label: 緊急度
+      description: この問題の緊急度はどの程度ですか？
+      options:
+        - 緊急（即座に対応が必要）
+        - 高（できるだけ早く対応が必要）
+        - 中（重要だが緊急ではない）
+        - 低（改善要望レベル）
+    validations:
+      required: true
+
+  - type: textarea
+    id: problem_description
+    attributes:
+      label: 問題の詳細
+      description: 発見した問題や懸念について詳しく説明してください
+      placeholder: |
+        例：
+        - 他の学生の個人情報が見えてしまう
+        - ログインしていないのに情報にアクセスできる
+        - パスワードが画面に表示される
+        - 削除したはずの情報がまだ見える
+        - 権限のない人がデータを変更できる
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps_to_reproduce
+    attributes:
+      label: 問題の再現方法
+      description: この問題はどのような手順で発生しますか？
+      placeholder: |
+        例：
+        1. 学生としてログインする
+        2. 部活動一覧を開く
+        3. URL を手動で変更する
+        4. 他の学生の情報が表示される
+        
+        注意：実際に問題のある操作は控えて、発見した方法のみ報告してください
+    validations:
+      required: true
+
+  - type: textarea
+    id: affected_data
+    attributes:
+      label: 影響を受けるデータ・情報
+      description: どのような情報が影響を受けますか？
+      placeholder: |
+        例：
+        - 学生の氏名・学年
+        - メールアドレス
+        - 部活動の登録情報
+        - 教師の連絡先
+        - システムの設定情報
+    validations:
+      required: true
+
+  - type: dropdown
+    id: affected_users
+    attributes:
+      label: 影響を受けるユーザー
+      description: この問題はどのユーザーに影響しますか？
+      options:
+        - 全ての学生
+        - 特定の学生
+        - 全ての教師
+        - 特定の教師
+        - 全てのユーザー
+        - 管理者
+        - 外部の人（ログインしていない人）
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: security_concerns
+    attributes:
+      label: セキュリティ上の懸念
+      description: 以下のうち該当するものをチェックしてください（複数選択可）
+      options:
+        - label: 個人情報の漏洩
+        - label: 不正ログイン・なりすまし
+        - label: データの不正変更・削除
+        - label: 権限管理の不備
+        - label: 通信の盗聴・改ざん
+        - label: システムへの不正侵入
+        - label: データのバックアップ不備
+
+  - type: textarea
+    id: immediate_impact
+    attributes:
+      label: 現在の影響
+      description: この問題により現在どのような影響が出ていますか？
+      placeholder: |
+        例：
+        - 学生が他の学生の情報を見ることができる
+        - 保護者から苦情が来ている
+        - まだ実害は出ていないが潜在的リスクがある
+        - システム利用を一時停止している
+
+  - type: textarea
+    id: suggested_fix
+    attributes:
+      label: 提案する対策
+      description: この問題をどのように解決すべきだと思いますか？
+      placeholder: |
+        例：
+        - ログインチェックを厳しくする
+        - アクセス権限を見直す
+        - 個人情報の表示範囲を制限する
+        - パスワードの強度を上げる
+        - データの暗号化を行う
+
+  - type: textarea
+    id: temporary_measure
+    attributes:
+      label: 一時的な対処法
+      description: 修正されるまでの間、どのような対処を取っていますか？
+      placeholder: |
+        例：
+        - 該当機能の利用を停止している
+        - 学生・教師に注意喚起をしている
+        - 特定のページへのアクセスを制限している
+        - 手動での確認作業を行っている
+
+  - type: checkboxes
+    id: privacy_requirements
+    attributes:
+      label: プライバシー保護要件
+      description: 以下のプライバシー保護要件のうち重要なものをチェックしてください
+      options:
+        - label: 学生は自分の情報のみ閲覧可能
+        - label: 教師は担当クラス・部活の学生情報のみ閲覧可能
+        - label: 個人情報は最小限の表示に留める
+        - label: データの利用目的を明確にする
+        - label: 情報の第三者提供を制限する
+        - label: 卒業・退職時のデータ削除
+
+  - type: textarea
+    id: compliance_requirements
+    attributes:
+      label: 法的・規制要件
+      description: 準拠する必要がある法律や規制があれば教えてください
+      placeholder: |
+        例：
+        - 個人情報保護法
+        - 学校教育法
+        - 地方自治体の個人情報保護条例
+        - 文部科学省のガイドライン
+        - その他の業界基準
+
+  - type: textarea
+    id: security_technical_guidance
+    attributes:
+      label: 開発者向けセキュリティガイダンス
+      description: |
+        **セキュリティ実装のための技術的指針:**
+        
+        **認証・認可:**
+        - 既存: `src/backend/routers/auth.py` で認証管理
+        - セッション管理の実装
+        - 最小権限の原則に基づくアクセス制御
+        
+        **入力検証:**
+        - 全ての入力値のサニタイゼーション
+        - SQLインジェクション対策（該当する場合）
+        - XSS対策
+        
+        **データ保護:**
+        - 機密情報の暗号化
+        - パスワードのハッシュ化（argon2使用）
+        - 個人情報の最小化表示
+        
+        **通信セキュリティ:**
+        - HTTPS通信の強制
+        - セキュアなCookie設定
+        - CORS設定の見直し
+        
+        **ログ・監査:**
+        - セキュリティイベントのログ記録
+        - 異常なアクセスパターンの検知
+        - 個人情報アクセスの記録
+        
+        **制約事項:**
+        - 軽量・シンプルなセキュリティ実装
+        - 複雑な外部認証システムは避ける
+        - 教育現場での使いやすさを維持
+      render: markdown

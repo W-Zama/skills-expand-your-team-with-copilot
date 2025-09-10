@@ -1,0 +1,191 @@
+name: 一般的なサポート・質問
+description: 使い方がわからない、トレーニングが必要、その他のサポートが必要な場合
+title: "[サポート] "
+labels: ["support", "question", "teacher-help"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## 一般的なサポートリクエスト
+        
+        システムの使い方がわからない、操作方法を教えてほしい、トレーニングが必要など、
+        一般的なサポートが必要な場合にこのフォームを使用してください。
+
+  - type: dropdown
+    id: support_type
+    attributes:
+      label: サポートの種類
+      description: どのような種類のサポートが必要ですか？
+      options:
+        - 操作方法の説明
+        - 機能の使い方
+        - トレーニング・研修
+        - マニュアル・ドキュメント
+        - トラブルシューティング
+        - システム設定の相談
+        - その他の質問
+    validations:
+      required: true
+
+  - type: input
+    id: specific_topic
+    attributes:
+      label: 具体的な内容
+      description: 何について知りたい、またはサポートが必要ですか？
+      placeholder: 例：部活動の追加方法、学生の登録確認方法、パスワードリセット方法
+    validations:
+      required: true
+
+  - type: textarea
+    id: current_situation
+    attributes:
+      label: 現在の状況
+      description: 現在どのような状況で、何に困っていますか？
+      placeholder: |
+        例：
+        - 新しい部活動を追加したいが方法がわからない
+        - 学生から「登録できない」と言われたが対処法がわからない
+        - システムを使い始めたばかりで基本操作がわからない
+        - 以前は使えていた機能が使えなくなった
+    validations:
+      required: true
+
+  - type: dropdown
+    id: urgency
+    attributes:
+      label: 緊急度
+      description: この件の緊急度はどの程度ですか？
+      options:
+        - 緊急（今日中に解決が必要）
+        - 高（今週中に解決したい）
+        - 中（来週までに解決したい）
+        - 低（時間があるときで良い）
+    validations:
+      required: true
+
+  - type: dropdown
+    id: user_experience
+    attributes:
+      label: システム使用経験
+      description: このシステムをどのくらい使っていますか？
+      options:
+        - 初回使用
+        - 数回使用
+        - 定期的に使用
+        - 長期間使用
+        - 以前は使えていたが久しぶりに使用
+    validations:
+      required: true
+
+  - type: textarea
+    id: attempted_solutions
+    attributes:
+      label: 試したこと
+      description: 問題解決のために既に試したことがあれば教えてください
+      placeholder: |
+        例：
+        - マニュアルを探したが見つからなかった
+        - 他の先生に聞いてみた
+        - インターネットで調べた
+        - 以前のやり方を試したが上手くいかなかった
+        - システムの再起動を試した
+
+  - type: checkboxes
+    id: preferred_support_method
+    attributes:
+      label: 希望するサポート方法
+      description: どのような方法でサポートを受けたいですか？（複数選択可）
+      options:
+        - label: 文書による説明
+        - label: 画面キャプチャ付きの手順書
+        - label: ビデオでの説明
+        - label: 直接的な操作指導
+        - label: 電話でのサポート
+        - label: 対面でのサポート
+
+  - type: textarea
+    id: additional_users
+    attributes:
+      label: 他の関係者
+      description: 同じ問題を抱えている他の教師や関係者はいますか？
+      placeholder: |
+        例：
+        - 他の先生からも同様の質問がある
+        - 新任教師向けの研修が必要
+        - 学年全体でサポートが必要
+        - 特定の部署だけの問題
+
+  - type: textarea
+    id: context_information
+    attributes:
+      label: 背景情報
+      description: サポートを提供する上で知っておくべき背景があれば教えてください
+      placeholder: |
+        例：
+        - 新学期の準備で忙しい時期
+        - システムが最近更新された
+        - 新しいルールや規則が追加された
+        - 他校から転任してきたばかり
+        - 担当業務が変わった
+
+  - type: textarea
+    id: success_criteria
+    attributes:
+      label: サポート成功の基準
+      description: どのような状態になればサポートが成功したと言えますか？
+      placeholder: |
+        例：
+        - 一人で基本操作ができるようになる
+        - 学生からの質問に答えられるようになる
+        - 新しい部活動を追加できるようになる
+        - 緊急時の対処法を知っておく
+    validations:
+      required: true
+
+  - type: textarea
+    id: documentation_feedback
+    attributes:
+      label: マニュアル・ドキュメントへの要望
+      description: どのようなマニュアルやドキュメントがあると役立ちますか？
+      placeholder: |
+        例：
+        - よくある質問（FAQ）
+        - 操作手順の動画
+        - トラブルシューティングガイド
+        - 新機能の説明書
+        - 用語集
+
+  - type: textarea
+    id: support_technical_context
+    attributes:
+      label: 開発者向けサポート情報
+      description: |
+        **サポート提供のための技術的コンテキスト:**
+        
+        **システム構成:**
+        - FastAPI（Python）ベースのウェブアプリケーション
+        - 静的ファイル（HTML/CSS/JavaScript）
+        - メモリ内データストレージ
+        
+        **ユーザー特性:**
+        - 技術的背景なし
+        - 教育現場での多忙なスケジュール
+        - シンプルで直感的な操作を求める
+        
+        **サポート制約:**
+        - 専門用語を避けた説明
+        - 段階的な手順説明
+        - 視覚的なガイド（スクリーンショット等）
+        - エラー時の回復方法
+        
+        **ドキュメント作成時の考慮点:**
+        - 日本語での分かりやすい説明
+        - 実際の使用場面を想定したシナリオ
+        - よくある間違いとその対処法
+        - システム更新時の変更点の明確化
+        
+        **継続的改善:**
+        - ユーザーフィードバックの収集
+        - FAQ の更新
+        - 操作性の改善点の特定
+      render: markdown

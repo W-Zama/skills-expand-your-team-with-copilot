@@ -1,0 +1,181 @@
+name: バグ修正
+description: システムが正常に動作しない問題を報告してください
+title: "[バグ] "
+labels: ["bug", "teacher-report"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## バグ報告
+        
+        システムに問題が発生した場合、このフォームを使って詳細を報告してください。
+        技術的な専門用語は使わなくても大丈夫です。何が起こったか、何を期待していたかを具体的に教えてください。
+
+  - type: input
+    id: bug_summary
+    attributes:
+      label: 問題の概要
+      description: 何が起こっているかを一文で説明してください
+      placeholder: 例：学生が部活動に登録できない、画面が表示されない、エラーメッセージが出る
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps_to_reproduce
+    attributes:
+      label: 問題の再現手順
+      description: 問題が起こるまでに何をしましたか？順番に教えてください
+      placeholder: |
+        例：
+        1. システムにログインする
+        2. 「部活動一覧」をクリックする
+        3. 「サッカー部」を選択する
+        4. 「登録する」ボタンを押す
+        5. エラーメッセージが表示される
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected_behavior
+    attributes:
+      label: 期待していた動作
+      description: 本来はどのような結果が期待されていましたか？
+      placeholder: |
+        例：
+        - 「登録完了」のメッセージが表示される
+        - 確認メールが届く
+        - 部活動リストに名前が追加される
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual_behavior
+    attributes:
+      label: 実際に起こったこと
+      description: 実際には何が起こりましたか？エラーメッセージがあれば正確に入力してください
+      placeholder: |
+        例：
+        - 「エラーが発生しました」と表示される
+        - ページが真っ白になる
+        - 何も反応がない
+        - 「Internal Server Error」と表示される
+    validations:
+      required: true
+
+  - type: dropdown
+    id: frequency
+    attributes:
+      label: 発生頻度
+      description: この問題はどのくらいの頻度で発生しますか？
+      options:
+        - 必ず発生する
+        - ほとんどの場合発生する
+        - 時々発生する
+        - まれに発生する
+    validations:
+      required: true
+
+  - type: dropdown
+    id: user_affected
+    attributes:
+      label: 影響を受けるユーザー
+      description: この問題は誰に影響しますか？
+      options:
+        - 全ての学生
+        - 一部の学生
+        - 教師
+        - 管理者
+        - 全てのユーザー
+        - 不明
+    validations:
+      required: true
+
+  - type: dropdown
+    id: impact_level
+    attributes:
+      label: 影響度
+      description: この問題の影響はどの程度深刻ですか？
+      options:
+        - 緊急（システム全体が使えない）
+        - 高（重要な機能が使えない）
+        - 中（一部の機能が使えない）
+        - 低（使いにくいが回避策がある）
+    validations:
+      required: true
+
+  - type: textarea
+    id: workaround
+    attributes:
+      label: 現在の回避策
+      description: この問題を一時的に回避する方法があれば教えてください
+      placeholder: |
+        例：
+        - ブラウザをリロードすると直る
+        - 別のブラウザを使うと動く
+        - 時間をおいてから再試行すると成功する
+        - 特定の操作を避けて別の方法を使っている
+
+  - type: input
+    id: browser_info
+    attributes:
+      label: 使用ブラウザ
+      description: 問題が発生したときに使っていたブラウザを教えてください
+      placeholder: 例：Chrome、Firefox、Safari、Edge、Internet Explorer
+    validations:
+      required: true
+
+  - type: input
+    id: device_info
+    attributes:
+      label: 使用デバイス
+      description: パソコン、タブレット、スマートフォンのどれを使っていましたか？
+      placeholder: 例：Windows PC、Mac、iPhone、Androidスマートフォン
+    validations:
+      required: true
+
+  - type: textarea
+    id: additional_context
+    attributes:
+      label: その他の情報
+      description: 他に関連すると思われる情報があれば教えてください
+      placeholder: |
+        例：
+        - 以前は正常に動作していた
+        - 特定の時間帯に問題が起こる
+        - 他の先生からも同様の報告がある
+        - 最近何かシステムの変更があった
+
+  - type: checkboxes
+    id: debugging_hints
+    attributes:
+      label: 技術的なヒント（開発者向け）
+      description: 以下の項目で該当すると思われるものをチェックしてください
+      options:
+        - label: フロントエンド（画面表示）の問題
+        - label: バックエンド（サーバー）の問題
+        - label: データベースの問題
+        - label: 認証・ログインの問題
+        - label: ネットワーク・通信の問題
+        - label: ブラウザ互換性の問題
+
+  - type: textarea
+    id: technical_context
+    attributes:
+      label: 開発者向けのコンテキスト
+      description: |
+        **技術的な調査のためのヒント:**
+        
+        - FastAPIアプリケーション（Python）
+        -静的ファイル配信（HTML/CSS/JS）
+        - メモリ内データベース使用
+        - `/activities` と `/activities/{activity_name}/signup` エンドポイント
+        - ログはuvicornサーバーコンソールで確認
+        - ブラウザの開発者ツールでJavaScriptエラーを確認
+        - ネットワークタブでAPI呼び出しの状態を確認
+        
+        **制約事項:**
+        - HTMLファイル、CSS、JavaScript、Pythonのみ使用
+        - 新しいサービス・アプリケーション追加不可
+        - コマンドラインツール作成不可
+        - シンプルなユーザーエクスペリエンス維持
+      render: markdown
